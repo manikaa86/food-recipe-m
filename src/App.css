@@ -30,13 +30,12 @@ li a {
   padding: 14px 20px;
   text-decoration: none;
 }
-
 header{  
   /* min-height: 100vh; */
   background-color: #CDD193;
   margin: 0px;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #013A20;
   padding: 0px 10px;
   margin-top: 0;
   margin-bottom:0;
@@ -44,6 +43,22 @@ header{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.typed-out{
+  overflow: hidden;
+  font-family: 'Sura', serif;
+  border-right: 3px solid #535E4B;
+  white-space: nowrap;
+  animation: typing 4s steps(50, end) forwards;
+  font-size: 20px;
+  width: 0;
+  word-wrap: break-word;
+}
+
+/* need to adjust for screen size, but works for now */
+@keyframes typing {
+  from { width: 5 }
+  to { width: 40% }
 }
 
 form.search {
