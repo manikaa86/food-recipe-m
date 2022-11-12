@@ -4,6 +4,16 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      <nav>
+        <ul>
+          <li>
+            <a href="">Profile</a>
+          </li>
+          <li>
+            <a href="">Recipe Search</a>
+          </li>
+        </ul>
+      </nav>
       <header className="App-header">
         <h1> Welcome!</h1>
       </header>
