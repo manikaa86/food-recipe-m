@@ -61,6 +61,12 @@ header{
   to { width: 40% }
 }
 
+.side-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
 form.search {
   display: flex;
   justify-content: center;

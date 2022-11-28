@@ -2,6 +2,16 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+
+  const navigateProfile = () => {
+    console.log("navigated to profile")
+  }
+
+  const navigateSearch = () => {
+    console.log("navigated to search")
+  }
+
+
   return (
     <div className="App">
       <nav>
@@ -24,8 +34,8 @@ function App() {
       {/* need to fix button functionality */}
       <div className="side-buttons">
         <center>
-          <button> Profile </button>
-          <button> Recipe Search </button>{" "}
+          <button onClick={navigateProfile}> Profile </button>
+          <button onClick={navigateSearch}> Recipe Search </button>{" "}
         </center>
       </div>
       <center>
