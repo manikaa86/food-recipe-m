@@ -11,7 +11,6 @@ function App() {
     console.log("navigated to search")
   }
 
-
   return (
     <div className="App">
       <nav>
