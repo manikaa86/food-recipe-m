@@ -1,15 +1,33 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Routes from "./Routes";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
 function App() {
+  ReactDOM.render(
+    <Router>
+      <div className="App">
+        <Navigation />
+        <Routes />
+      </div>
+    </Router>,
+    document.getElementById("root")
+  );
 
   const navigateProfile = () => {
-    console.log("navigated to profile")
-  }
+    let navigate = useNavigate();
+    console.log("navigated to profile");
+  };
 
   const navigateSearch = () => {
-    console.log("navigated to search")
-  }
+    let navigate = useNavigate();
+    console.log("navigated to search");
+  };
 
   return (
     <div className="App">
