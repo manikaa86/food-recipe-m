@@ -2,6 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const navSignup = () => {
+    console.log("navigated to signup");
+  };
+
+  const navLogin = () => {
+    console.log("navigated to login");
+  };
+
   return (
     <div>
       <ul>
@@ -23,6 +31,12 @@ const Home = () => {
         <div className="typed-out">
           Welcome to Food Recipe Search, the best place to find recipes that
           meet your nutritional needs.
+        </div>
+        <div className="buttons">
+          <center>
+            <button onClick={navSignup}> Sign Up </button>
+            <button onClick={navLogin}> Log in </button>
+          </center>
         </div>
         &nbsp;
         <div className="card">

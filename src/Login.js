@@ -18,7 +18,7 @@ function Login() {
         console.log("Email and Passowrd do not match");
       }
     } else {
-      console.log("Email and Passowrd do not match");
+      console.log("Email and Password do not match");
     }
   };
   return (
