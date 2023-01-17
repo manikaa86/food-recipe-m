@@ -13,9 +13,9 @@ function Login() {
     const userData = JSON.parse(localStorage.getItem(data.email));
     if (userData) {
       if (userData.password === data.password) {
-        console.log(userData.name + "You are now logged in");
+        console.log(userData.name + "You are now logged in to the application");
       } else {
-        console.log("Email and Passowrd do not match");
+        console.log("Your username and password are not aligning with our records")
       }
     } else {
       console.log("Email and Password do not match");

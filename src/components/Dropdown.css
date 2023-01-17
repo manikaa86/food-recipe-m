@@ -1,0 +1,33 @@
+.dropdown-container {
+    text-align: left;
+    border: 2px solid #478C5C;
+    position: relative;
+    border-radius: 5px;
+  }
+  
+  .dropdown-input {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  .dropwdown-menu {
+    position: absolute;
+    transform: translateY(4px);
+    width: 100%;
+    border: 2px solid #478C5C;
+    border-radius: 5px; 
+    overflow: auto;  
+    background-color: white;
+  }
+
+  .dropdown-item {
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .dropdown-item-hover {
+    background-color: pink;
+  }

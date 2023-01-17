@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
 const RecipeSearch = () => {
+ 
+  const options = [
+    {value: "vegan", label: "Vegan"},
+    {value: "vegetarian", label: "Vegetarian"},
+    {value: "gluten-free", label: "Gluten-Free"},
+  ];
+
+
   return (
     <div>
       <ul>
@@ -18,7 +27,10 @@ const RecipeSearch = () => {
       <header className="App-header">
         <h1> Recipe Search</h1>
       </header>
+
       <center>
+      <Dropdown placeholder="Select..." options={options}/>
+
         <div className="typed-out">Search for a recipe below</div>
         <form className="search">
           <input type="text" placeholder="Search for a recipe" />
