@@ -1,8 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const Home = () => {
+  const [query, setquery] = useState("");
+  const [recipes, setRecipes] = useState([]);
+  const healthLabels = [
+    "vegetarian",
+    "vegan",
+    "alcohol-free",
+    "dairy-free",
+    "egg-free",
+    "fish-free",
+    "gluten-free",
+    "wheat-free",
+    "low-sugar",
+    "pescatarian",
+  ];
+  const [selected, setSelected] = useState(healthLabels[0]);
+
+  const APP_ID = "68ed0003";
+  const APP_KEY = "580ae88643b5921536f45145d70c0152";
+
+  var url = `https://api.edamam.com/search?q=${query}&app_id=68ed0003&app_key=${APP_KEY}&health=${selected}`;
+  console.log(url);
   const navSignup = () => {
     console.log("navigated to signup");
   };
@@ -68,6 +90,14 @@ const Home = () => {
           )}
           <input type="password" {...register("password")} />
           <input type={"submit"} style={{ backgroundColor: "#BACC81" }} />
+
+          <select value={selected} onChange={(e) => setSelected(e.target.value)}>
+          {healthLabels.map((value) => (
+            <option value={value} key={value}>
+              {value}
+            </option>
+          ))}
+        </select>
         </form>
       </center>
           

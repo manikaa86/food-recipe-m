@@ -1,15 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Dropdown from "./Dropdown";
+import { useState } from "react";
+import Axios from "axios";
 
 const RecipeSearch = () => {
- 
-  const options = [
-    {value: "vegan", label: "Vegan"},
-    {value: "vegetarian", label: "Vegetarian"},
-    {value: "gluten-free", label: "Gluten-Free"},
+  const [query, setquery] = useState("");
+  const [recipes, setRecipes] = useState([]);
+  const healthLabels = [
+    "vegetarian",
+    "vegan",
+    "alcohol-free",
+    "dairy-free",
+    "egg-free",
+    "fish-free",
+    "gluten-free",
+    "wheat-free",
+    "low-sugar",
+    "pescatarian",
   ];
+  const [selected, setSelected] = useState(healthLabels[0]);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
@@ -29,13 +42,28 @@ const RecipeSearch = () => {
       </header>
 
       <center>
-      <Dropdown placeholder="Select..." options={options}/>
-
         <div className="typed-out">Search for a recipe below</div>
-        <form className="search">
-          <input type="text" placeholder="Search for a recipe" />
-          <input className="submit" type="submit" value="Go" />
+        <form className="search" onSubmit={onSubmit}>
+          <input
+            type="text"
+            placeholder="Search for a recipe"
+            value={query}
+            onChange={(a) => setquery(a.target.value)}
+          />
+          <input className="submit" type="submit" value="go" />
+
+          <select
+            value={selected}
+            onChange={(e) => setSelected(e.target.value)}
+          >
+            {healthLabels.map((value) => (
+              <option value={value} key={value}>
+                {value}
+              </option>
+            ))}
+          </select>
         </form>
+
         <div className="card">
           <label>
             <b> Results </b>
