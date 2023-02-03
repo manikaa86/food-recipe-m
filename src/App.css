@@ -1,5 +1,5 @@
 App {
-  background-color: #CDD193;
+  background-color: #CDD193;  
 }
 
 ul {
@@ -44,6 +44,7 @@ header{
   justify-content: center;
   align-items: center;
 }
+
 .typed-out{
   overflow: hidden;
   font-family: 'Sura', serif;
@@ -67,21 +68,13 @@ header{
   gap: 100px;
   flex-wrap: wrap;
 }
+
 form.search {
   display: flex;
   justify-content: center;
   gap: 6px;
   align-items: center;
   min-width: 200px; max-width: 100vw;
-}
-
-input[type=text] {
-  width: 10%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #478C5C;
-  box-sizing: border-box;
 }
 
 .card {
@@ -94,15 +87,25 @@ input[type=text] {
   flex-wrap: wrap;
   /* justify-content: space-evenly; */
   padding: 10px; 
-  }
+}
 
 .submit {
- padding: 1px;
- background-color: #478C5C;
- border: 2px solid #478C5C ;
- border-radius: 2px;
- 
+    padding: 1px 10px;
+    background-color: #478C5C;
+    border: 2px solid #478C5C ;
+    border-radius: 2px;
+    color: white;
 }
+   
+.submit:hover {
+     padding: 1px 10px;
+     background-color: #478C5C;
+     border: 2px solid #478C5C ;
+     border-radius: 2px;
+     color: white;
+     cursor: pointer;
+}
+
 
 .recipe-grid {
   margin-top: 30px;

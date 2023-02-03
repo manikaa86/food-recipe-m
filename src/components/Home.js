@@ -78,30 +78,19 @@ const Home = () => {
           </center>
         </div>
         <p className="title">Registration Form</p>
-        
-      <center>
-        <form className="App" onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" {...register("name")} />
-          <input type="email" {...register("email", { required: true })} />
-          {errors.email && (
-            <span style={{ color: "red" }}>
-              Please enter your email to proceed
-            </span>
-          )}
-          <input type="password" {...register("password")} />
-          <input type={"submit"} style={{ backgroundColor: "#BACC81" }} />
-
-          <select value={selected} onChange={(e) => setSelected(e.target.value)}>
-          {healthLabels.map((value) => (
-            <option value={value} key={value}>
-              {value}
-            </option>
-          ))}
-        </select>
-        </form>
-      </center>
-          
-        
+        <center>
+          <form className="App" onSubmit={handleSubmit(onSubmit)}>
+            <input type="text" {...register("name")} />
+            <input type="email" {...register("email", { required: true })} />
+            {errors.email && (
+              <span style={{ color: "red" }}>
+                Please enter your email to proceed
+              </span>
+            )}
+            <input type="password" {...register("password")} />
+            <input type={"submit"} style={{ backgroundColor: "#BACC81" }} />
+          </form>
+        </center>
         &nbsp;
         <div className="card">
           <label>

@@ -51,6 +51,7 @@ const RecipeSearch = () => {
           <Link to="/recipesearch">Recipe Search</Link>
         </li>
       </ul>
+
       <header className="App-header">
         <h1> Recipe Search</h1>
       </header>
@@ -78,14 +79,11 @@ const RecipeSearch = () => {
           </select>
         </form>
 
-        <center>
-          {" "}
-          <div className="recipe-grid">
-            {recipes.map((recipe) => {
-              return <Grid recipe={recipe} />;
-            })}
-          </div>{" "}
-        </center>
+        <div className="recipe-grid">
+          {recipes.map((recipe) => {
+            return <Grid recipe={recipe} />;
+          })}
+        </div>
       </center>
     </div>
   );
