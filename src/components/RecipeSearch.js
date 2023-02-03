@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Axios from "axios";
+import Grid from "../Grid";
 
 const RecipeSearch = () => {
   const [query, setquery] = useState("");
@@ -20,8 +21,21 @@ const RecipeSearch = () => {
   ];
   const [selected, setSelected] = useState(healthLabels[0]);
 
+  const APP_ID = "68ed0003";
+  const APP_KEY = "580ae88643b5921536f45145d70c0152";
+
+  var url = `https://api.edamam.com/search?q=${query}&app_id=68ed0003&app_key=${APP_KEY}&health=${selected}`;
+  console.log(url);
+
+  async function getRecipes() {
+    var result = await Axios.get(url);
+    setRecipes(result.data.hits);
+    await console.log(result.data);
+  }
+
   const onSubmit = (e) => {
     e.preventDefault();
+    getRecipes();
   };
 
   return (
@@ -64,20 +78,14 @@ const RecipeSearch = () => {
           </select>
         </form>
 
-        <div className="card">
-          <label>
-            <b> Results </b>
-          </label>
-          <p> Spaghetti Carbonara</p>
-
-          <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcooking.nytimes.com%2Frecipes%2F12965-spaghetti-carbonara&psig=AOvVaw2DTUdLEqB8hq_kiUeTBmwv&ust=1668315004431000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCLCN-evrp_sCFQAAAAAdAAAAABAD">
-            <img
-              src="https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-articleLarge-v2.jpg"
-              width="299"
-              height="210"
-            />
-          </a>
-        </div>
+        <center>
+          {" "}
+          <div className="recipe-grid">
+            {recipes.map((recipe) => {
+              return <Grid recipe={recipe} />;
+            })}
+          </div>{" "}
+        </center>
       </center>
     </div>
   );
