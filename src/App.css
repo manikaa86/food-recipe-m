@@ -109,7 +109,7 @@ form.search {
 
 .recipe-grid {
   margin-top: 30px;
-  align-items: center;
+  justify-content: center;
   display: grid;
   grid-template-columns: 240px 240px;
   grid-column-gap: 30px;
