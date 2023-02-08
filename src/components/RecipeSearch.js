@@ -25,6 +25,8 @@ const RecipeSearch = () => {
   const APP_KEY = "580ae88643b5921536f45145d70c0152";
 
   var url = `https://api.edamam.com/search?q=${query}&app_id=68ed0003&app_key=${APP_KEY}&health=${selected}`;
+  
+  
   console.log(url);
 
   async function getRecipes() {
@@ -56,8 +58,12 @@ const RecipeSearch = () => {
         <h1> Recipe Search</h1>
       </header>
 
+     &nbsp;
+
       <center>
         <div className="typed-out">Search for a recipe below</div>
+        &nbsp;
+
         <form className="search" onSubmit={onSubmit}>
           <input
             type="text"

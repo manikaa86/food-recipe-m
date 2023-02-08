@@ -77,6 +77,7 @@ const Home = () => {
             <button onClick={navLogin}> Log in </button>
           </center>
         </div>
+
         <p className="title">Registration Form</p>
         <center>
           <form className="App" onSubmit={handleSubmit(onSubmit)}>
@@ -91,6 +92,7 @@ const Home = () => {
             <input type={"submit"} style={{ backgroundColor: "#BACC81" }} />
           </form>
         </center>
+        
         &nbsp;
         <div className="card">
           <label>
