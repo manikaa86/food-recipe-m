@@ -77,22 +77,32 @@ const Home = () => {
             <button onClick={navLogin}> Log in </button>
           </center>
         </div>
-
-        <p className="title">Registration Form</p>
+        <p className="title"> Registration Form</p>
         <center>
-          <form className="App" onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" {...register("name")} />
-            <input type="email" {...register("email", { required: true })} />
+          <form class="search" onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              {...register("name")}
+            />
+            <input
+              type="email"
+              placeholder="Enter your email"
+              {...register("email", { required: true })}
+            />
             {errors.email && (
               <span style={{ color: "red" }}>
                 Please enter your email to proceed
               </span>
             )}
-            <input type="password" {...register("password")} />
-            <input type={"submit"} style={{ backgroundColor: "#BACC81" }} />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              {...register("password")}
+            />
+            <input className="submit" type="submit" value="Submit" />
           </form>
         </center>
-        
         &nbsp;
         <div className="card">
           <label>

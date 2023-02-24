@@ -15,7 +15,9 @@ function Login() {
       if (userData.password === data.password) {
         console.log(userData.name + "You are now logged in to the application");
       } else {
-        console.log("Your username and password are not aligning with our records")
+        console.log(
+          "Your username and password are not aligning with our records"
+        );
       }
     } else {
       console.log("Email and Password do not match");
@@ -27,8 +29,9 @@ function Login() {
 
       <form className="App" onSubmit={handleSubmit(onSubmit)}>
         <input type="email" {...register("email", { required: true })} />
-        {errors.email && <span style={{ color: "red" }}>
-         *Email* is mandatory </span>}
+        {errors.email && (
+          <span style={{ color: "red" }}>*Email* is mandatory </span>
+        )}
         <input type="password" {...register("password")} />
         <input type={"submit"} style={{ backgroundColor: "#a1eafb" }} />
       </form>
