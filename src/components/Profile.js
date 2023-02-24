@@ -1,7 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Profile = () => {
+  const healthLabels = [
+    "vegetarian",
+    "vegan",
+    "alcohol-free",
+    "dairy-free",
+    "egg-free",
+    "fish-free",
+    "gluten-free",
+    "wheat-free",
+    "low-sugar",
+    "pescatarian",
+  ];
+  const [selected, setSelected] = useState(healthLabels[1]);
+
   return (
     <div>
       <ul>
@@ -22,23 +37,34 @@ const Profile = () => {
         &nbsp;
         <div className="typed-out">Hello, name, these are your preferences</div>
         &nbsp;
-        <div className="card">
-          <label>
-            <b> Preferences </b>
-          </label>
+        <div className="container">
+          <div className="card">
+            <label>
+              <b> Preferences </b>
+              <select
+              value={selected}
+              onChange={(e) => setSelected(e.target.value)}
+            >
+              {healthLabels.map((value) => (
+                <option value={value} key={value}>
+                  {value}
+                </option>
+              ))}
+            </select>
+            </label>
+                
+            <p> {selected}</p>
+          </div>
           &nbsp;
-          <p> Vegan</p>
-        </div>
-        &nbsp;
-        <div className="card">
-          <label>
-            <b> Saved Recipes </b>
-          </label>
-          <br />
-
-          <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcooking.nytimes.com%2Frecipes%2F12965-spaghetti-carbonara&psig=AOvVaw2DTUdLEqB8hq_kiUeTBmwv&ust=1668315004431000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCLCN-evrp_sCFQAAAAAdAAAAABAD">
-            Spaghetti Carbonara
-          </a>
+          <div className="card">
+            <label>
+              <b> Saved Recipes </b>
+            </label>
+            <br />
+            <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcooking.nytimes.com%2Frecipes%2F12965-spaghetti-carbonara&psig=AOvVaw2DTUdLEqB8hq_kiUeTBmwv&ust=1668315004431000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCLCN-evrp_sCFQAAAAAdAAAAABAD">
+              Spaghetti Carbonara
+            </a>
+          </div>
         </div>
       </center>
     </div>
