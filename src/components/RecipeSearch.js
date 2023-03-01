@@ -71,8 +71,6 @@ const RecipeSearch = () => {
             value={query}
             onChange={(a) => setquery(a.target.value)}
           />
-          <input className="submit" type="submit" value="go" />
-
           <select
             value={selected}
             onChange={(e) => setSelected(e.target.value)}
@@ -83,6 +81,8 @@ const RecipeSearch = () => {
               </option>
             ))}
           </select>
+          <input className="submit" type="submit" value="go" />
+
         </form>
 
         <div className="recipe-grid">
