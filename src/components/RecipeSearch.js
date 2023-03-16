@@ -51,7 +51,7 @@ const RecipeSearch = () => {
   };
 
   const getRecipes = async () => {
-    const url = `https://api.edamam.com/search?q=${query}&app_id=68ed0003&app_key=${APP_KEY}&health=${selected}`;
+    const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&health=${selected}`;
     const result = await Axios.get(url);
     setRecipes(result.data.hits);
     localStorage.setItem("searchQuery", query);

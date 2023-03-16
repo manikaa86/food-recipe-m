@@ -17,7 +17,7 @@ const Profile = () => {
     "low-sugar",
     "pescatarian",
   ];
-  const [selected, setSelected] = useState(healthLabels[1]);
+  const [selected, setSelected] = useState(healthLabels[5]);
   const [savedRecipes, setSavedRecipes] = useState(
     JSON.parse(localStorage.getItem("savedRecipes")) || []
   );
