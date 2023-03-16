@@ -1,12 +1,35 @@
 .recipe-name {
     max-width: 250px;
     text-align: center;
-    margin: 12 px 0px;
-    }
-    
-.recipe-image {
+    margin: 12px 0px;
+  }
+  
+  .recipe-image {
     height: 250px;
     width: 250px;
     object-fit: cover;
     border-radius: 2px;
-}
+    position: relative;
+  }
+  
+  .save-button {
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+  }
+  
+  .save-button:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .save-button.saved {
+    background-color: yellow;
+    border-color: yellow;
+    color: black;
+  }
