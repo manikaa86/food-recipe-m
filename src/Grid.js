@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Grid.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
-export default function Grid({ recipe }) {
+export default function Grid({ recipe, onSave, onRemove }) {
   const [saved, setSaved] = useState(false);
 
   const handleSaveClick = () => {
-    setSaved(!saved);
+    const newSaved = !saved;
+    setSaved(newSaved);
+    if (onSave) {
+      onSave(recipe, newSaved);
+    }
   };
+
+  const handleRemoveClick = () => {
+    onRemove(recipe);
+  };
+
+  useEffect(() => {
+    const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+    const isSaved = savedRecipes.some((r) => r.recipe.uri === recipe.recipe.uri);
+    setSaved(isSaved);
+  }, [recipe]);
 
   return (
     <div className="grid">
@@ -18,6 +32,15 @@ export default function Grid({ recipe }) {
       </p>
       <p className="recipe-name">
         {recipe["recipe"]["label"]}{" "}
+        {onRemove && (
+          <button
+            className="remove-button"
+            onClick={handleRemoveClick}
+            title="Remove"
+          >
+            <i className="fa fa-times"></i>
+          </button>
+        )}
         <button
           className={`save-button ${saved ? "saved" : ""}`}
           onClick={handleSaveClick}

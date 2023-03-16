@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
 import Grid from "../Grid";
 
 const RecipeSearch = () => {
-  const [query, setquery] = useState("");
+  const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState([]);
   const healthLabels = [
     "vegetarian",
@@ -20,24 +20,43 @@ const RecipeSearch = () => {
     "pescatarian",
   ];
   const [selected, setSelected] = useState(healthLabels[0]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [savedRecipes, setSavedRecipes] = useState([]);
 
   const APP_ID = "68ed0003";
   const APP_KEY = "580ae88643b5921536f45145d70c0152";
 
-  var url = `https://api.edamam.com/search?q=${query}&app_id=68ed0003&app_key=${APP_KEY}&health=${selected}`;
-  
-  
-  console.log(url);
+  useEffect(() => {
+    const savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+    setSavedRecipes(savedRecipes);
+  }, []);
 
-  async function getRecipes() {
-    var result = await Axios.get(url);
-    setRecipes(result.data.hits);
-    await console.log(result.data);
-  }
+  const saveRecipe = (recipe) => {
+    const savedRecipes = [...savedRecipes, recipe];
+    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+    setSavedRecipes(savedRecipes);
+  };
+
+  const removeRecipe = (recipe) => {
+    const savedRecipes = savedRecipes.filter(
+      (savedRecipe) => savedRecipe.recipe.uri !== recipe.recipe.uri
+    );
+    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+    setSavedRecipes(savedRecipes);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
     getRecipes();
+  };
+
+  const getRecipes = async () => {
+    const url = `https://api.edamam.com/search?q=${query}&app_id=68ed0003&app_key=${APP_KEY}&health=${selected}`;
+    const result = await Axios.get(url);
+    setRecipes(result.data.hits);
+    localStorage.setItem("searchQuery", query);
+    localStorage.setItem("searchResults", JSON.stringify(result.data.hits));
+    setIsLoaded(true);
   };
 
   return (
@@ -53,23 +72,19 @@ const RecipeSearch = () => {
           <Link to="/recipesearch">Recipe Search</Link>
         </li>
       </ul>
-
       <header className="App-header">
         <h1> Recipe Search</h1>
       </header>
 
-     &nbsp;
-
       <center>
         <div className="typed-out">Search for a recipe below</div>
-        &nbsp;
 
         <form className="search" onSubmit={onSubmit}>
           <input
             type="text"
             placeholder="Search for a recipe"
             value={query}
-            onChange={(a) => setquery(a.target.value)}
+            onChange={(a) => setQuery(a.target.value)}
           />
           <select
             value={selected}
@@ -82,12 +97,57 @@ const RecipeSearch = () => {
             ))}
           </select>
           <input className="submit" type="submit" value="go" />
-
         </form>
-
         <div className="recipe-grid">
           {recipes.map((recipe) => {
-            return <Grid recipe={recipe} />;
+            const savedRecipes =
+              JSON.parse(localStorage.getItem("savedRecipes")) || [];
+            const saved = savedRecipes.some(
+              (savedRecipe) => savedRecipe.recipe.uri === recipe.recipe.uri
+            );
+            return (
+              <Grid
+                recipe={recipe}
+                key={recipe.recipe.uri}
+                onSave={(saved) => {
+                  if (saved) {
+                    savedRecipes.push(recipe);
+                    localStorage.setItem(
+                      "savedRecipes",
+                      JSON.stringify(savedRecipes)
+                    );
+                  } else {
+                    const index = savedRecipes.findIndex(
+                      (savedRecipe) =>
+                        savedRecipe.recipe.uri === recipe.recipe.uri
+                    );
+                    if (index !== -1) {
+                      savedRecipes.splice(index, 1);
+                      localStorage.setItem(
+                        "savedRecipes",
+                        JSON.stringify(savedRecipes)
+                      );
+                    }
+                  }
+                }}
+                onRemove={(removedRecipe) => {
+                  const savedRecipes =
+                    JSON.parse(localStorage.getItem("savedRecipes")) || [];
+                  const index = savedRecipes.findIndex(
+                    (savedRecipe) =>
+                      savedRecipe.recipe.uri === removedRecipe.recipe.uri
+                  );
+                  if (index !== -1) {
+                    savedRecipes.splice(index, 1);
+                    localStorage.setItem(
+                      "savedRecipes",
+                      JSON.stringify(savedRecipes)
+                    );
+                  }
+                }}
+                saved={saved}
+              />
+            );
           })}
         </div>
       </center>
