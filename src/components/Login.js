@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "./Login.css";
 
-const Login = ({ handleLogin }) => {
+const LoginForm = ({ handleLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -17,29 +18,37 @@ const Login = ({ handleLogin }) => {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="login" onSubmit={handleSubmit}>
       {error && <div className="alert">{error}</div>}
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-      </label>
+      <b>
+        <label>
+          Username:
+          <input
+            type="text"
+            value={username}
+            placeholder="Enter your username"
+            style={{ marginLeft: "0.5rem" }}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </label>
+      </b>
       <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </label>
+      <b>
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            placeholder="Enter your password"
+            style={{ marginLeft: "0.5rem" }}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+      </b>
       <br />
       <button type="submit">Login</button>
     </form>
   );
 };
 
-export default Login;
+export default LoginForm;

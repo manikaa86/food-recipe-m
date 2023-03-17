@@ -30,6 +30,7 @@ const Home = () => {
           <Link to="/recipesearch">Recipe Search</Link>
         </li>
       </ul>
+
       {isLoggedIn ? (
         <>
           <header className="App-header">
@@ -58,9 +59,7 @@ const Home = () => {
           </center>
         </>
       ) : (
-        <center>
-          <LoginForm handleLogin={handleLogin} />
-        </center>
+        <LoginForm handleLogin={handleLogin} />
       )}
     </div>
   );

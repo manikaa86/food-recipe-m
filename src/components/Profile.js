@@ -44,7 +44,7 @@ const Profile = () => {
         <h1> Profile</h1>
       </header>
       <center>
-        <div className="typed-out">Hello, these are your saved preferences</div>
+        <h4>These are your saved preferences!</h4>
         &nbsp;
         <div className="container">
           <div className="card">

@@ -77,7 +77,7 @@ const RecipeSearch = () => {
       </header>
 
       <center>
-        <div className="typed-out">Search for a recipe below</div>
+        <h4>Search for a recipe below</h4>
 
         <form className="search" onSubmit={onSubmit}>
           <input
