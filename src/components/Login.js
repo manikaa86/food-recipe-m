@@ -20,6 +20,7 @@ const LoginForm = ({ handleLogin }) => {
   return (
     <form className="login" onSubmit={handleSubmit}>
       {error && <div className="alert">{error}</div>}
+      <h2> Please enter your login credentials below</h2>
       <b>
         <label>
           Username:
