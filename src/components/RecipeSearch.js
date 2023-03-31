@@ -45,11 +45,6 @@ const RecipeSearch = () => {
     setSavedRecipes(savedRecipes);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    getRecipes();
-  };
-
   const getRecipes = async () => {
     const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&health=${selected}`;
     const result = await Axios.get(url);
@@ -58,6 +53,12 @@ const RecipeSearch = () => {
     localStorage.setItem("searchResults", JSON.stringify(result.data.hits));
     setIsLoaded(true);
   };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    getRecipes();
+  };
+
 
   return (
     <div>
@@ -98,6 +99,7 @@ const RecipeSearch = () => {
           </select>
           <input className="submit" type="submit" value="go" />
         </form>
+        
         <div className="recipe-grid">
           {recipes.map((recipe) => {
             const savedRecipes =
