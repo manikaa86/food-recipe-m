@@ -52,9 +52,21 @@ const Home = ({ handleLogout }) => {
                   height="250"
                 />
               </a>
+              <p>
+                Red Velvet Cake 
+                <button className="remove-button" title="Remove">
+                  <i className="fa fa-times"></i>
+                </button>{" "}
+                <button className={"save - button"} title="saved">
+                  <i className="fa fa-star"></i>
+                </button>{" "}
+              </p>
             </label>
           </div>
-          <button onClick={handleLogout}>Logout</button>
+          &nbsp;
+          <div className="logout-button">
+            <button onClick={handleLogout}>Logout</button>{" "}
+          </div>
         </center>
       </>
     </div>
